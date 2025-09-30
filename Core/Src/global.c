@@ -5,4 +5,6 @@
  *      Author: dinhh
  */
 
+#include "global.h"
+
 
