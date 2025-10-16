@@ -93,10 +93,25 @@ Discarded input sections
  .text          0x00000000        0x0 ./Core/Src/button.o
  .data          0x00000000        0x0 ./Core/Src/button.o
  .bss           0x00000000        0x0 ./Core/Src/button.o
- .debug_info    0x00000000       0x70 ./Core/Src/button.o
- .debug_abbrev  0x00000000       0x28 ./Core/Src/button.o
+ .bss.KeyReg    0x00000000       0x28 ./Core/Src/button.o
+ .data.TimeOutForKeyPress
+                0x00000000        0x4 ./Core/Src/button.o
+ .bss.button_flag
+                0x00000000       0x28 ./Core/Src/button.o
+ .bss.button_long_pressed
+                0x00000000       0x28 ./Core/Src/button.o
+ .text.isButtonPressed
+                0x00000000       0x34 ./Core/Src/button.o
+ .text.isLongButtonPressed
+                0x00000000       0x34 ./Core/Src/button.o
+ .text.getKeyInput
+                0x00000000        0xc ./Core/Src/button.o
+ .debug_info    0x00000000      0x140 ./Core/Src/button.o
+ .debug_abbrev  0x00000000       0xc5 ./Core/Src/button.o
  .debug_aranges
-                0x00000000       0x18 ./Core/Src/button.o
+                0x00000000       0x30 ./Core/Src/button.o
+ .debug_rnglists
+                0x00000000       0x1f ./Core/Src/button.o
  .debug_macro   0x00000000      0x1b5 ./Core/Src/button.o
  .debug_macro   0x00000000      0xacc ./Core/Src/button.o
  .debug_macro   0x00000000      0x215 ./Core/Src/button.o
@@ -135,9 +150,10 @@ Discarded input sections
  .debug_macro   0x00000000       0x69 ./Core/Src/button.o
  .debug_macro   0x00000000       0x10 ./Core/Src/button.o
  .debug_macro   0x00000000       0x10 ./Core/Src/button.o
- .debug_line    0x00000000      0x6cd ./Core/Src/button.o
- .debug_str     0x00000000    0x7f75c ./Core/Src/button.o
+ .debug_line    0x00000000      0x727 ./Core/Src/button.o
+ .debug_str     0x00000000    0x7f7cc ./Core/Src/button.o
  .comment       0x00000000       0x44 ./Core/Src/button.o
+ .debug_frame   0x00000000       0x80 ./Core/Src/button.o
  .ARM.attributes
                 0x00000000       0x2d ./Core/Src/button.o
  .group         0x00000000        0xc ./Core/Src/global.o
