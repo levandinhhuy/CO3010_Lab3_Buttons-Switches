@@ -385,6 +385,7 @@ void init_auto_red_yel()
 	counter_way1 = yel_time;
 	update_led_7seg_buffer();
 }
+
 void auto_red_yel()
 {
 	if (1)
@@ -423,6 +424,7 @@ void init_auto_grn_red()
 	counter_way1 = red_time;
 	update_led_7seg_buffer();
 }
+
 void auto_grn_red()
 {
 	if (1)
@@ -460,6 +462,7 @@ void init_auto_yel_red()
 	counter_way1 = yel_time;
 	update_led_7seg_buffer();
 }
+
 void auto_yel_red()
 {
 	if (1)
@@ -491,6 +494,7 @@ void init_man_red_grn()
 	// OTHER PRECONDITIONS
 	setTimer(TIMER_7SEG, TIME_7SEG);
 }
+
 void man_red_grn()
 {
 	if (1)
@@ -505,6 +509,7 @@ void init_man_red_yel()
 	// TIMER_TRAFFIC_LIGHT
 	setTimer(TIMER_TRAFFIC_LIGHT, yel_time * 1000);
 }
+
 void man_red_yel()
 {
 	if (1)
@@ -520,6 +525,7 @@ void init_man_grn_red()
 	resetButton(&button1);
 	resetButton(&button2);
 }
+
 void man_grn_red()
 {
 	if (1)
@@ -534,6 +540,7 @@ void init_man_yel_red()
 	// TIMER_TRAFFIC_LIGHT
 	setTimer(TIMER_TRAFFIC_LIGHT, yel_time * 1000);
 }
+
 void man_yel_red()
 {
 	if (1)
@@ -559,6 +566,7 @@ void init_red_time_config()
 	update_led_7seg_buffer();
 	setTimer(TIMER_7SEG, TIME_7SEG);
 }
+
 void red_time_config()
 {
 	if (1)
@@ -613,6 +621,7 @@ void init_red_time_config_change()
 
 	setTimer(TIMER_7SEG_STATUS, TIME_7SEG_STATUS);
 }
+
 void red_time_config_change()
 {
 	if (1)
@@ -688,6 +697,7 @@ void init_yel_time_config()
 	update_led_7seg_buffer();
 	setTimer(TIMER_7SEG, TIME_7SEG);
 }
+
 void yel_time_config()
 {
 	if (1)
@@ -742,6 +752,7 @@ void init_yel_time_config_change()
 
 	setTimer(TIMER_7SEG_STATUS, TIME_7SEG_STATUS);
 }
+
 void yel_time_config_change()
 {
 	if (1)

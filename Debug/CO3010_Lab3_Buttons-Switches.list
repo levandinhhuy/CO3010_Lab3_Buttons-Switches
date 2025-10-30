@@ -2345,6 +2345,7 @@ void init_auto_red_yel()
  8001068:	200000d8 	.word	0x200000d8
 
 0800106c <auto_red_yel>:
+
 void auto_red_yel()
 {
  800106c:	b580      	push	{r7, lr}
@@ -2463,6 +2464,7 @@ void init_auto_grn_red()
  8001138:	200000d8 	.word	0x200000d8
 
 0800113c <auto_grn_red>:
+
 void auto_grn_red()
 {
  800113c:	b580      	push	{r7, lr}
@@ -2577,6 +2579,7 @@ void init_auto_yel_red()
  80011fc:	200000d8 	.word	0x200000d8
 
 08001200 <auto_yel_red>:
+
 void auto_yel_red()
 {
  8001200:	b580      	push	{r7, lr}
@@ -2661,6 +2664,7 @@ void init_man_red_grn()
  800127c:	20000048 	.word	0x20000048
 
 08001280 <man_red_grn>:
+
 void man_red_grn()
 {
  8001280:	b580      	push	{r7, lr}
@@ -2697,6 +2701,7 @@ void init_man_red_yel()
  80012ac:	20000080 	.word	0x20000080
 
 080012b0 <man_red_yel>:
+
 void man_red_yel()
 {
  80012b0:	b580      	push	{r7, lr}
@@ -2732,6 +2737,7 @@ void init_man_grn_red()
  80012d8:	20000048 	.word	0x20000048
 
 080012dc <man_grn_red>:
+
 void man_grn_red()
 {
  80012dc:	b580      	push	{r7, lr}
@@ -2768,6 +2774,7 @@ void init_man_yel_red()
  8001308:	20000080 	.word	0x20000080
 
 0800130c <man_yel_red>:
+
 void man_yel_red()
 {
  800130c:	b580      	push	{r7, lr}
@@ -2834,6 +2841,7 @@ void init_red_time_config()
  800136c:	200000d8 	.word	0x200000d8
 
 08001370 <red_time_config>:
+
 void red_time_config()
 {
  8001370:	b580      	push	{r7, lr}
@@ -2989,6 +2997,7 @@ void init_red_time_config_change()
  8001464:	200000d8 	.word	0x200000d8
 
 08001468 <red_time_config_change>:
+
 void red_time_config_change()
 {
  8001468:	b580      	push	{r7, lr}
@@ -3215,6 +3224,7 @@ void init_yel_time_config()
  80015cc:	200000d8 	.word	0x200000d8
 
 080015d0 <yel_time_config>:
+
 void yel_time_config()
 {
  80015d0:	b580      	push	{r7, lr}
@@ -3369,6 +3379,7 @@ void init_yel_time_config_change()
  80016c4:	200000d8 	.word	0x200000d8
 
 080016c8 <yel_time_config_change>:
+
 void yel_time_config_change()
 {
  80016c8:	b580      	push	{r7, lr}
