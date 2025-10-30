@@ -1,0 +1,4 @@
+../Core/Src/led_display.c:27:6:display7SEG	24	static
+../Core/Src/led_display.c:36:6:enable7SEG	24	static
+../Core/Src/led_display.c:49:6:disable7SEG	8	static
+../Core/Src/led_display.c:57:6:displayNumbers	16	static

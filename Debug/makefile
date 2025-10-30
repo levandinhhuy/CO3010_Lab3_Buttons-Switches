@@ -66,8 +66,8 @@ all: main-build
 main-build: CO3010_Lab3_Buttons-Switches.elf secondary-outputs
 
 # Tool invocations
-CO3010_Lab3_Buttons-Switches.elf CO3010_Lab3_Buttons-Switches.map: $(OBJS) $(USER_OBJS) D:\STM32CubeIDE\CO3010_Lab3_Buttons-Switches\STM32F103C6UX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "CO3010_Lab3_Buttons-Switches.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"D:\STM32CubeIDE\CO3010_Lab3_Buttons-Switches\STM32F103C6UX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CO3010_Lab3_Buttons-Switches.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+CO3010_Lab3_Buttons-Switches.elf CO3010_Lab3_Buttons-Switches.map: $(OBJS) $(USER_OBJS) D:\HK251\CO3009\Labs\CO3010_Lab3_Buttons-Switches\STM32F103C6UX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "CO3010_Lab3_Buttons-Switches.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"D:\HK251\CO3009\Labs\CO3010_Lab3_Buttons-Switches\STM32F103C6UX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CO3010_Lab3_Buttons-Switches.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

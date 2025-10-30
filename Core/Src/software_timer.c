@@ -7,13 +7,13 @@
 
 #include "software_timer.h"
 
-#define TIMER_CYCLE 10
+#define TICK 1 // ms
 
 struct TimerStruct timer[10];
 
 void setTimer(int idx, int counter)
 {
-	timer[idx].counter = counter / TIMER_CYCLE;
+	timer[idx].counter = counter / TICK;
 	timer[idx].flag = 0;
 }
 

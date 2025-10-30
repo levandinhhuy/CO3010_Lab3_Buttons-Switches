@@ -9,17 +9,27 @@
 #define INC_BUTTON_H_
 
 #include "main.h"
+#include "global.h"
 
-#define NORMAL_STATE SET
-#define PRESSED_STATE RESET
+struct ButtonStruct
+{
+	int keyBuffer[4]; 		// New data in [0], old data in [2]
+	int timeOutForPressed; 	// ms
+	int isPressed;
+	int isLongPress;
+	GPIO_TypeDef *PORT;
+	uint16_t PIN;
+};
 
-extern int KeyReg[10];
-extern int TimeOutForKeyPress;
-extern int button_flag[10];
-extern int button_long_pressed[10];
+extern struct ButtonStruct button0;
+extern struct ButtonStruct button1;
+extern struct ButtonStruct button2;
 
-int isButtonPressed(int index);
-int isButtonLongPressed(int index);
-void getKeyInput();
+void getKeyInput(struct ButtonStruct* button);
+int isButtonPressed(struct ButtonStruct* button);
+int isButtonLongPressed(struct ButtonStruct* button);
+void resetButton(struct ButtonStruct* button);
+void subKeyProcess(struct ButtonStruct* button);
+
 
 #endif /* INC_BUTTON_H_ */
