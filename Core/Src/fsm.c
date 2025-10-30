@@ -930,7 +930,26 @@ void grn_time_config_change()
 	}
 }
 
+void init_yel_blinky()
+{
+	// BTN_1
+	resetButton(&button1);
 
+	// OTHER PRECONDITIONS
+	turn_yel_on();
+	unable_4digit();
+	setTimer(TIMER_500MS, TIME_500MS);
+}
+
+void yel_blinky()
+{
+	if (isFlag(TIMER_500MS))
+	{
+		HAL_GPIO_TogglePin(LED_YEL_0_GPIO_Port, LED_YEL_0_Pin);
+		HAL_GPIO_TogglePin(LED_YEL_1_GPIO_Port, LED_YEL_1_Pin);
+		setTimer(TIMER_500MS, TIME_500MS);
+	}
+}
 
 
 

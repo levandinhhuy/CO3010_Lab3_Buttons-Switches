@@ -34,3 +34,5 @@
 ../Core/Src/fsm.c:820:6:grn_time_config	6
 ../Core/Src/fsm.c:856:6:init_grn_time_config_change	1
 ../Core/Src/fsm.c:874:6:grn_time_config_change	9
+../Core/Src/fsm.c:933:6:init_yel_blinky	1
+../Core/Src/fsm.c:944:6:yel_blinky	2

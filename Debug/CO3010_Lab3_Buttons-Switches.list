@@ -2230,6 +2230,7 @@ void init_auto_red_grn()
  8000fa4:	200000d8 	.word	0x200000d8
 
 08000fa8 <auto_red_grn>:
+
 void auto_red_grn()
 {
  8000fa8:	b580      	push	{r7, lr}
@@ -3941,6 +3942,7 @@ void init_yel_blinky()
  8001a50:	20000024 	.word	0x20000024
 
 08001a54 <yel_blinky>:
+
 void yel_blinky()
 {
  8001a54:	b580      	push	{r7, lr}

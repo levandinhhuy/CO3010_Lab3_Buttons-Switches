@@ -87,4 +87,7 @@ void grn_time_config();
 void init_grn_time_config_change();
 void grn_time_config_change();
 
+void init_yel_blinky();
+void yel_blinky();
+
 #endif /* INC_FSM_H_ */
