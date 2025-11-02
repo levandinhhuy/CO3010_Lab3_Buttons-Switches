@@ -19,5 +19,4 @@ void display_a_digit(int digit, int num);
 void display_number(int num);
 void enable_digit(int digit);
 
-
 #endif /* INC_7SEG_DISPLAY_H_ */

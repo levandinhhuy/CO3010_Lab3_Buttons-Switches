@@ -11,245 +11,246 @@ enum TrafficLightState TRAFFIC_LIGHT_STATE = INIT;
 
 void fsm_traffic_light()
 {
-	switch (TRAFFIC_LIGHT_STATE) {
-		case INIT:
-			// CHANGE STATE
-			if (1) // -> AUTO_RED_GRN
-			{
-				init_auto_red_grn();
-				TRAFFIC_LIGHT_STATE = AUTO_RED_GRN;
-			}
-			break;
-		case AUTO_RED_GRN:
-			auto_red_grn();
+	switch (TRAFFIC_LIGHT_STATE)
+	{
+	case INIT:
+		// CHANGE STATE
+		if (1) // -> AUTO_RED_GRN
+		{
+			init_auto_red_grn();
+			TRAFFIC_LIGHT_STATE = AUTO_RED_GRN;
+		}
+		break;
+	case AUTO_RED_GRN:
+		auto_red_grn();
 
-			// CHANGE STATE
-			if (isFlag(TIMER_TRAFFIC_LIGHT)) // -> AUTO_RED_YEL
-			{
-				init_auto_red_yel();
-				TRAFFIC_LIGHT_STATE = AUTO_RED_YEL;
-			}
-			else if (isButtonPressed(&button0)) // -> RED_TIME_CONFIG
-			{
-				init_red_time_config();
-				TRAFFIC_LIGHT_STATE = RED_TIME_CONFIG;
-			}
-			else if (isButtonPressed(&button1)) // -> YEL_BLINKY
-			{
-				init_yel_blinky();
-				TRAFFIC_LIGHT_STATE = YEL_BLINKY;
-			}
-			else if (isButtonPressed(&button2)) // -> MAN_RED_GRN
-			{
-				init_man_red_grn();
-				TRAFFIC_LIGHT_STATE = MAN_RED_GRN;
-			}
+		// CHANGE STATE
+		if (isFlag(TIMER_TRAFFIC_LIGHT)) // -> AUTO_RED_YEL
+		{
+			init_auto_red_yel();
+			TRAFFIC_LIGHT_STATE = AUTO_RED_YEL;
+		}
+		else if (isButtonPressed(&button0)) // -> RED_TIME_CONFIG
+		{
+			init_red_time_config();
+			TRAFFIC_LIGHT_STATE = RED_TIME_CONFIG;
+		}
+		else if (isButtonPressed(&button1)) // -> YEL_BLINKY
+		{
+			init_yel_blinky();
+			TRAFFIC_LIGHT_STATE = YEL_BLINKY;
+		}
+		else if (isButtonPressed(&button2)) // -> MAN_RED_GRN
+		{
+			init_man_red_grn();
+			TRAFFIC_LIGHT_STATE = MAN_RED_GRN;
+		}
 
-			break;
-		case AUTO_RED_YEL:
-			auto_red_yel();
+		break;
+	case AUTO_RED_YEL:
+		auto_red_yel();
 
-			// CHANGE STATE
-			if (isFlag(TIMER_TRAFFIC_LIGHT)) // -> AUTO_GRN_RED
-			{
-				init_auto_grn_red();
-				TRAFFIC_LIGHT_STATE = AUTO_GRN_RED;
-			}
-			else if (isButtonPressed(&button0)) // -> RED_TIME_CONFIG
-			{
-				init_red_time_config();
-				TRAFFIC_LIGHT_STATE = RED_TIME_CONFIG;
-			}
-			else if (isButtonPressed(&button1)) // -> YEL_BLINKY
-			{
-				init_yel_blinky();
-				TRAFFIC_LIGHT_STATE = YEL_BLINKY;
-			}
-			break;
-		case AUTO_GRN_RED:
-			auto_grn_red();
+		// CHANGE STATE
+		if (isFlag(TIMER_TRAFFIC_LIGHT)) // -> AUTO_GRN_RED
+		{
+			init_auto_grn_red();
+			TRAFFIC_LIGHT_STATE = AUTO_GRN_RED;
+		}
+		else if (isButtonPressed(&button0)) // -> RED_TIME_CONFIG
+		{
+			init_red_time_config();
+			TRAFFIC_LIGHT_STATE = RED_TIME_CONFIG;
+		}
+		else if (isButtonPressed(&button1)) // -> YEL_BLINKY
+		{
+			init_yel_blinky();
+			TRAFFIC_LIGHT_STATE = YEL_BLINKY;
+		}
+		break;
+	case AUTO_GRN_RED:
+		auto_grn_red();
 
-			if (isFlag(TIMER_TRAFFIC_LIGHT)) // -> AUTO_YEL_RED
-			{
-				init_auto_yel_red();
-				TRAFFIC_LIGHT_STATE = AUTO_YEL_RED;
-			}
-			else if (isButtonPressed(&button0)) // -> RED_TIME_CONFIG
-			{
-				init_red_time_config();
-				TRAFFIC_LIGHT_STATE = RED_TIME_CONFIG;
-			}
-			else if (isButtonPressed(&button1)) // -> YEL_BLINKY
-			{
-				init_yel_blinky();
-				TRAFFIC_LIGHT_STATE = YEL_BLINKY;
-			}
-			else if (isButtonPressed(&button2)) // -> MAN_GRN_RED
-			{
-				init_man_grn_red();
-				TRAFFIC_LIGHT_STATE = MAN_GRN_RED;
-			}
-			break;
-		case AUTO_YEL_RED:
-			auto_yel_red();
+		if (isFlag(TIMER_TRAFFIC_LIGHT)) // -> AUTO_YEL_RED
+		{
+			init_auto_yel_red();
+			TRAFFIC_LIGHT_STATE = AUTO_YEL_RED;
+		}
+		else if (isButtonPressed(&button0)) // -> RED_TIME_CONFIG
+		{
+			init_red_time_config();
+			TRAFFIC_LIGHT_STATE = RED_TIME_CONFIG;
+		}
+		else if (isButtonPressed(&button1)) // -> YEL_BLINKY
+		{
+			init_yel_blinky();
+			TRAFFIC_LIGHT_STATE = YEL_BLINKY;
+		}
+		else if (isButtonPressed(&button2)) // -> MAN_GRN_RED
+		{
+			init_man_grn_red();
+			TRAFFIC_LIGHT_STATE = MAN_GRN_RED;
+		}
+		break;
+	case AUTO_YEL_RED:
+		auto_yel_red();
 
-			if (isFlag(TIMER_TRAFFIC_LIGHT)) // -> AUTO_RED_GRN
-			{
-				init_auto_red_grn();
-				TRAFFIC_LIGHT_STATE = AUTO_RED_GRN;
-			}
-			else if (isButtonPressed(&button0)) // -> RED_TIME_CONFIG
-			{
-				init_red_time_config();
-				TRAFFIC_LIGHT_STATE = RED_TIME_CONFIG;
-			}
-			else if (isButtonPressed(&button1)) // -> YEL_BLINKY
-			{
-				init_yel_blinky();
-				TRAFFIC_LIGHT_STATE = YEL_BLINKY;
-			}
-			break;
-		case MAN_RED_GRN:
-			man_red_grn();
+		if (isFlag(TIMER_TRAFFIC_LIGHT)) // -> AUTO_RED_GRN
+		{
+			init_auto_red_grn();
+			TRAFFIC_LIGHT_STATE = AUTO_RED_GRN;
+		}
+		else if (isButtonPressed(&button0)) // -> RED_TIME_CONFIG
+		{
+			init_red_time_config();
+			TRAFFIC_LIGHT_STATE = RED_TIME_CONFIG;
+		}
+		else if (isButtonPressed(&button1)) // -> YEL_BLINKY
+		{
+			init_yel_blinky();
+			TRAFFIC_LIGHT_STATE = YEL_BLINKY;
+		}
+		break;
+	case MAN_RED_GRN:
+		man_red_grn();
 
-			if (isButtonPressed(&button1)) // -> MAN_RED_YEL
-			{
-				init_man_red_yel();
-				TRAFFIC_LIGHT_STATE = MAN_RED_YEL;
-			}
-			else if (isButtonPressed(&button2)) // -> AUTO_RED_GRN
-			{
-				init_auto_red_grn();
-				TRAFFIC_LIGHT_STATE = AUTO_RED_GRN;
-			}
-			break;
-		case MAN_RED_YEL:
-			man_red_yel();
+		if (isButtonPressed(&button1)) // -> MAN_RED_YEL
+		{
+			init_man_red_yel();
+			TRAFFIC_LIGHT_STATE = MAN_RED_YEL;
+		}
+		else if (isButtonPressed(&button2)) // -> AUTO_RED_GRN
+		{
+			init_auto_red_grn();
+			TRAFFIC_LIGHT_STATE = AUTO_RED_GRN;
+		}
+		break;
+	case MAN_RED_YEL:
+		man_red_yel();
 
-			if (isFlag(TIMER_TRAFFIC_LIGHT)) // -> MAN_GRN_RED
-			{
-				init_man_grn_red();
-				TRAFFIC_LIGHT_STATE = MAN_GRN_RED;
-			}
-			break;
-		case MAN_GRN_RED:
-			man_grn_red();
+		if (isFlag(TIMER_TRAFFIC_LIGHT)) // -> MAN_GRN_RED
+		{
+			init_man_grn_red();
+			TRAFFIC_LIGHT_STATE = MAN_GRN_RED;
+		}
+		break;
+	case MAN_GRN_RED:
+		man_grn_red();
 
-			if (isButtonPressed(&button1)) // -> MAN_YEL_RED
-			{
-				init_man_yel_red();
-				TRAFFIC_LIGHT_STATE = MAN_YEL_RED;
-			}
-			else if (isButtonPressed(&button2)) // -> AUTO_GRN_RED
-			{
-				init_auto_grn_red();
-				TRAFFIC_LIGHT_STATE = AUTO_GRN_RED;
-			}
-			break;
-		case MAN_YEL_RED:
-			man_yel_red();
+		if (isButtonPressed(&button1)) // -> MAN_YEL_RED
+		{
+			init_man_yel_red();
+			TRAFFIC_LIGHT_STATE = MAN_YEL_RED;
+		}
+		else if (isButtonPressed(&button2)) // -> AUTO_GRN_RED
+		{
+			init_auto_grn_red();
+			TRAFFIC_LIGHT_STATE = AUTO_GRN_RED;
+		}
+		break;
+	case MAN_YEL_RED:
+		man_yel_red();
 
-			if (isFlag(TIMER_TRAFFIC_LIGHT)) // -> MAN_RED_GRN
-			{
-				init_man_red_grn();
-				TRAFFIC_LIGHT_STATE = MAN_RED_GRN;
-			}
-			break;
-		case RED_TIME_CONFIG:
-			red_time_config();
+		if (isFlag(TIMER_TRAFFIC_LIGHT)) // -> MAN_RED_GRN
+		{
+			init_man_red_grn();
+			TRAFFIC_LIGHT_STATE = MAN_RED_GRN;
+		}
+		break;
+	case RED_TIME_CONFIG:
+		red_time_config();
 
-			if (isButtonPressed(&button0)) // -> YEL_TIME_CONFIG
-			{
-				init_yel_time_config();
-				TRAFFIC_LIGHT_STATE = YEL_TIME_CONFIG;
-			}
-			else if (red_temp_time != red_time) // -> RED_TIME_CONFIG_CHANGE
-			{
-				init_red_time_config_change();
-				TRAFFIC_LIGHT_STATE = RED_TIME_CONFIG_CHANGE;
-			}
-			break;
-		case RED_TIME_CONFIG_CHANGE:
-			red_time_config_change();
+		if (isButtonPressed(&button0)) // -> YEL_TIME_CONFIG
+		{
+			init_yel_time_config();
+			TRAFFIC_LIGHT_STATE = YEL_TIME_CONFIG;
+		}
+		else if (red_temp_time != red_time) // -> RED_TIME_CONFIG_CHANGE
+		{
+			init_red_time_config_change();
+			TRAFFIC_LIGHT_STATE = RED_TIME_CONFIG_CHANGE;
+		}
+		break;
+	case RED_TIME_CONFIG_CHANGE:
+		red_time_config_change();
 
-			if (isButtonPressed(&button0)) // -> YEL_TIME_CONFIG
-			{
-				init_yel_time_config();
-				TRAFFIC_LIGHT_STATE = YEL_TIME_CONFIG;
-			}
-			else if (red_temp_time == red_time) // -> RED_TIME_CONFIG
-			{
-				init_red_time_config();
-				TRAFFIC_LIGHT_STATE = RED_TIME_CONFIG;
-			}
-			break;
-		case YEL_TIME_CONFIG:
-			yel_time_config();
+		if (isButtonPressed(&button0)) // -> YEL_TIME_CONFIG
+		{
+			init_yel_time_config();
+			TRAFFIC_LIGHT_STATE = YEL_TIME_CONFIG;
+		}
+		else if (red_temp_time == red_time) // -> RED_TIME_CONFIG
+		{
+			init_red_time_config();
+			TRAFFIC_LIGHT_STATE = RED_TIME_CONFIG;
+		}
+		break;
+	case YEL_TIME_CONFIG:
+		yel_time_config();
 
-			if (isButtonPressed(&button0)) // -> GRN_TIME_CONFIG
-			{
-				init_grn_time_config();
-				TRAFFIC_LIGHT_STATE = GRN_TIME_CONFIG;
-			}
-			else if (yel_temp_time != yel_time) // -> YEL_TIME_CONFIG_CHANGE
-			{
-				init_yel_time_config_change();
-				TRAFFIC_LIGHT_STATE = YEL_TIME_CONFIG_CHANGE;
-			}
-			break;
-		case YEL_TIME_CONFIG_CHANGE:
-			yel_time_config_change();
+		if (isButtonPressed(&button0)) // -> GRN_TIME_CONFIG
+		{
+			init_grn_time_config();
+			TRAFFIC_LIGHT_STATE = GRN_TIME_CONFIG;
+		}
+		else if (yel_temp_time != yel_time) // -> YEL_TIME_CONFIG_CHANGE
+		{
+			init_yel_time_config_change();
+			TRAFFIC_LIGHT_STATE = YEL_TIME_CONFIG_CHANGE;
+		}
+		break;
+	case YEL_TIME_CONFIG_CHANGE:
+		yel_time_config_change();
 
-			if (isButtonPressed(&button0)) // -> GRN_TIME_CONFIG
-			{
-				init_grn_time_config();
-				TRAFFIC_LIGHT_STATE = GRN_TIME_CONFIG;
-			}
-			else if (yel_temp_time == yel_time) // -> YEL_TIME_CONFIG
-			{
-				init_yel_time_config();
-				TRAFFIC_LIGHT_STATE = YEL_TIME_CONFIG;
-			}
-			break;
-		case GRN_TIME_CONFIG:
-			grn_time_config();
+		if (isButtonPressed(&button0)) // -> GRN_TIME_CONFIG
+		{
+			init_grn_time_config();
+			TRAFFIC_LIGHT_STATE = GRN_TIME_CONFIG;
+		}
+		else if (yel_temp_time == yel_time) // -> YEL_TIME_CONFIG
+		{
+			init_yel_time_config();
+			TRAFFIC_LIGHT_STATE = YEL_TIME_CONFIG;
+		}
+		break;
+	case GRN_TIME_CONFIG:
+		grn_time_config();
 
-			if (isButtonPressed(&button0)) // -> AUTO_RED_GRN
-			{
-				init_auto_red_grn();
-				TRAFFIC_LIGHT_STATE = AUTO_RED_GRN;
-			}
-			else if (grn_temp_time != grn_time) // -> GRN_TIME_CONFIG_CHANGE
-			{
-				init_grn_time_config_change();
-				TRAFFIC_LIGHT_STATE = GRN_TIME_CONFIG_CHANGE;
-			}
-			break;
-		case GRN_TIME_CONFIG_CHANGE:
-			grn_time_config_change();
+		if (isButtonPressed(&button0)) // -> AUTO_RED_GRN
+		{
+			init_auto_red_grn();
+			TRAFFIC_LIGHT_STATE = AUTO_RED_GRN;
+		}
+		else if (grn_temp_time != grn_time) // -> GRN_TIME_CONFIG_CHANGE
+		{
+			init_grn_time_config_change();
+			TRAFFIC_LIGHT_STATE = GRN_TIME_CONFIG_CHANGE;
+		}
+		break;
+	case GRN_TIME_CONFIG_CHANGE:
+		grn_time_config_change();
 
-			if (isButtonPressed(&button0)) // -> AUTO_RED_GRN
-			{
-				init_auto_red_grn();
-				TRAFFIC_LIGHT_STATE = AUTO_RED_GRN;
-			}
-			else if (grn_temp_time == grn_time) // -> GRN_TIME_CONFIG
-			{
-				init_grn_time_config();
-				TRAFFIC_LIGHT_STATE = GRN_TIME_CONFIG;
-			}
-			break;
-		case YEL_BLINKY:
-			yel_blinky();
+		if (isButtonPressed(&button0)) // -> AUTO_RED_GRN
+		{
+			init_auto_red_grn();
+			TRAFFIC_LIGHT_STATE = AUTO_RED_GRN;
+		}
+		else if (grn_temp_time == grn_time) // -> GRN_TIME_CONFIG
+		{
+			init_grn_time_config();
+			TRAFFIC_LIGHT_STATE = GRN_TIME_CONFIG;
+		}
+		break;
+	case YEL_BLINKY:
+		yel_blinky();
 
-			if (isButtonPressed(&button1)) // -> AUTO_RED_GRN
-			{
-				init_auto_red_grn();
-				TRAFFIC_LIGHT_STATE = AUTO_RED_GRN;
-			}
-			break;
-		default:
-			break;
+		if (isButtonPressed(&button1)) // -> AUTO_RED_GRN
+		{
+			init_auto_red_grn();
+			TRAFFIC_LIGHT_STATE = AUTO_RED_GRN;
+		}
+		break;
+	default:
+		break;
 	}
 }
 
@@ -345,7 +346,6 @@ void init_auto_red_grn()
 	counter_way0 = red_time;
 	counter_way1 = grn_time;
 	update_led_7seg_buffer();
-
 }
 
 void auto_red_grn()
@@ -823,7 +823,7 @@ void init_grn_time_config()
 	setTimer(TIMER_250MS, TIME_250MS);
 
 	set_on_4digits();
-	counter_way0 =grn_temp_time;
+	counter_way0 = grn_temp_time;
 	counter_way1 = 13;
 	update_led_7seg_buffer();
 	setTimer(TIMER_7SEG, TIME_7SEG);
@@ -961,14 +961,3 @@ void yel_blinky()
 		setTimer(TIMER_500MS, TIME_500MS);
 	}
 }
-
-
-
-
-
-
-
-
-
-
-

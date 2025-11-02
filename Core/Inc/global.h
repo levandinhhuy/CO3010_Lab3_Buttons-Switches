@@ -16,7 +16,7 @@
 
 // TIMER
 #define TIMER_READ_BTN 0
-#define TIME_READ_BTN 20 				// ms
+#define TIME_READ_BTN 20 // ms
 
 #define TIMER_TRAFFIC_LIGHT 1
 
@@ -41,7 +41,7 @@
 // BUTTON
 #define NORMAL_STATE 1
 #define PRESSED_STATE 0
-#define TIME_OUT_FOR_LONG_PRESSED 500 	// ms
+#define TIME_OUT_FOR_LONG_PRESSED 500 // ms
 
 // LED CONTROL
 #define LED_ON 0
@@ -63,6 +63,5 @@ extern int grn_time;
 extern int red_temp_time;
 extern int yel_temp_time;
 extern int grn_temp_time;
-
 
 #endif /* INC_GLOBAL_H_ */
