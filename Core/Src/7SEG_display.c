@@ -25,8 +25,7 @@ void unable_4digit()
 
 void display_4digits()
 {
-	if ((status_4digits[led_7seg_index] == LED_ON) &&
-		((led_7seg_index == 1 && led_7seg_buffer[0]) || (led_7seg_index == 3 && led_7seg_buffer[2]) || led_7seg_buffer[led_7seg_index]))
+	if (status_4digits[led_7seg_index] == LED_ON)
 	{
 		display_a_digit(led_7seg_index, led_7seg_buffer[led_7seg_index]);
 	}
@@ -39,9 +38,9 @@ void display_4digits()
 
 void update_led_7seg_buffer()
 {
-	led_7seg_buffer[0] = (counter_way0 / 10) % 10;
+	led_7seg_buffer[0] = counter_way0 / 10;
 	led_7seg_buffer[1] = counter_way0 % 10;
-	led_7seg_buffer[2] = (counter_way1 / 10) % 10;
+	led_7seg_buffer[2] = counter_way1 / 10;
 	led_7seg_buffer[3] = counter_way1 % 10;
 }
 

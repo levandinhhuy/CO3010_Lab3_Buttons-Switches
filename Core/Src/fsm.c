@@ -828,6 +828,7 @@ void init_grn_time_config()
 	update_led_7seg_buffer();
 	setTimer(TIMER_7SEG, TIME_7SEG);
 }
+
 void grn_time_config()
 {
 	if (1)
@@ -882,6 +883,7 @@ void init_grn_time_config_change()
 
 	setTimer(TIMER_7SEG_STATUS, TIME_7SEG_STATUS);
 }
+
 void grn_time_config_change()
 {
 	if (1)
