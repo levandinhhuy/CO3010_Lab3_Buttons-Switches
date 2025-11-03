@@ -21,7 +21,7 @@
 #define TIMER_TRAFFIC_LIGHT 1
 
 #define TIMER_7SEG 2
-#define TIME_7SEG 5
+#define TIME_7SEG 10
 
 #define TIMER_7SEG_STATUS 3
 #define TIME_7SEG_STATUS 250
