@@ -93,3 +93,4 @@ void resetButton(struct ButtonStruct *button)
 	button->isPressed = 0;
 	button->isLongPress = 0;
 }
+

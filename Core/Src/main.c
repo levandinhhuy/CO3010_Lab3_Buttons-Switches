@@ -109,7 +109,6 @@ int main(void)
 		getKeyInput(&button0);
 		getKeyInput(&button1);
 		getKeyInput(&button2);
-
 		setTimer(TIMER_READ_BTN, TIME_READ_BTN);
 	}
 
