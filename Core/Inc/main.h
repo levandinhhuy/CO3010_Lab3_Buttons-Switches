@@ -33,7 +33,7 @@ extern "C" {
 /* USER CODE BEGIN Includes */
 #include "7SEG_display.h"
 #include "button.h"
-#include "fsm.h"
+#include <fsm.h>
 #include "global.h"
 #include "software_timer.h"
 /* USER CODE END Includes */

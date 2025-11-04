@@ -87,10 +87,3 @@ int isButtonLongPressed(struct ButtonStruct *button)
 	}
 	return 0;
 }
-
-void resetButton(struct ButtonStruct *button)
-{
-	button->isPressed = 0;
-	button->isLongPress = 0;
-}
-

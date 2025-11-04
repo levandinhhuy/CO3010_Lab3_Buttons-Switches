@@ -28,7 +28,5 @@ extern struct ButtonStruct button2;
 void getKeyInput(struct ButtonStruct *button);
 int isButtonPressed(struct ButtonStruct *button);
 int isButtonLongPressed(struct ButtonStruct *button);
-void resetButton(struct ButtonStruct *button);
-void subKeyProcess(struct ButtonStruct *button);
 
 #endif /* INC_BUTTON_H_ */

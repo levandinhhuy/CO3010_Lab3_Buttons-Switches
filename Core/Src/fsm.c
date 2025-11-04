@@ -1,5 +1,5 @@
 /*
- * traffic_light.c
+ * fsm.c
  *
  *  Created on: Sep 29, 2025
  *      Author: dinhh
@@ -181,9 +181,6 @@ void turn_on_yel_red()
 void init_auto_red_grn()
 {
 	setTimer(TIMER_TRAFFIC_LIGHT, grn_time * 1000);
-	resetButton(&button0);
-	resetButton(&button1);
-	resetButton(&button2);
 
 	set_on_4digits();
 	setTimer(TIMER_7SEG, TIME_7SEG);
@@ -218,8 +215,6 @@ void auto_red_grn()
 void init_auto_red_yel()
 {
 	setTimer(TIMER_TRAFFIC_LIGHT, yel_time * 1000);
-	resetButton(&button0);
-	resetButton(&button1);
 
 	set_on_4digits();
 	setTimer(TIMER_7SEG, TIME_7SEG);
@@ -254,9 +249,6 @@ void auto_red_yel()
 void init_auto_grn_red()
 {
 	setTimer(TIMER_TRAFFIC_LIGHT, grn_time * 1000);
-	resetButton(&button0);
-	resetButton(&button1);
-	resetButton(&button2);
 
 	set_on_4digits();
 	setTimer(TIMER_7SEG, TIME_7SEG);
@@ -291,8 +283,6 @@ void auto_grn_red()
 void init_auto_yel_red()
 {
 	setTimer(TIMER_TRAFFIC_LIGHT, yel_time * 1000);
-	resetButton(&button0);
-	resetButton(&button1);
 
 	set_on_4digits();
 	setTimer(TIMER_7SEG, TIME_7SEG);
@@ -326,9 +316,6 @@ void auto_yel_red()
 
 void init_red_time_config()
 {
-	resetButton(&button0);
-	resetButton(&button1);
-	resetButton(&button2);
 	red_temp_time = red_time;
 
 	turn_red_on();
@@ -407,9 +394,6 @@ void red_time_config()
 
 void init_yel_time_config()
 {
-	resetButton(&button0);
-	resetButton(&button1);
-	resetButton(&button2);
 	yel_temp_time = yel_time;
 
 	turn_yel_on();
@@ -488,9 +472,6 @@ void yel_time_config()
 
 void init_grn_time_config()
 {
-	resetButton(&button0);
-	resetButton(&button1);
-	resetButton(&button2);
 	grn_temp_time = grn_time;
 
 	turn_grn_on();
