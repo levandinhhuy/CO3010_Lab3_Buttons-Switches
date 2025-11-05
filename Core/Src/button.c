@@ -56,7 +56,7 @@ void getKeyInput(struct ButtonStruct *button)
 		else // button->keyBuffer[2] == button->keyBuffer[3]
 		{
 			--button->timeOutForPressed;
-			if (button->timeOutForPressed <= 0)
+			if (button->timeOutForPressed == 0)
 			{
 				button->timeOutForPressed = TIME_OUT_FOR_LONG_PRESSED / TIME_READ_BTN;
 				if (button->keyBuffer[3] == PRESSED_STATE)

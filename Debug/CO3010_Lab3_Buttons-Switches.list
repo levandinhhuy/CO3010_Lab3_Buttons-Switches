@@ -27,9 +27,9 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  11 .ARM.attributes 00000029  00000000  00000000  000040a0  2**0
                   CONTENTS, READONLY
- 12 .debug_info   000089d8  00000000  00000000  000040c9  2**0
+ 12 .debug_info   000089d7  00000000  00000000  000040c9  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 13 .debug_abbrev 00001dee  00000000  00000000  0000caa1  2**0
+ 13 .debug_abbrev 00001dee  00000000  00000000  0000caa0  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  14 .debug_aranges 00000af0  00000000  00000000  0000e890  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
@@ -37,15 +37,15 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  16 .debug_macro  00017266  00000000  00000000  0000fbbf  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   0000d26b  00000000  00000000  00026e25  2**0
+ 17 .debug_line   0000d277  00000000  00000000  00026e25  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    00082819  00000000  00000000  00034090  2**0
+ 18 .debug_str    00082819  00000000  00000000  0003409c  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000043  00000000  00000000  000b68a9  2**0
+ 19 .comment      00000043  00000000  00000000  000b68b5  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  00002a60  00000000  00000000  000b68ec  2**2
+ 20 .debug_frame  00002a60  00000000  00000000  000b68f8  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_line_str 0000005b  00000000  00000000  000b934c  2**0
+ 21 .debug_line_str 0000005b  00000000  00000000  000b9358  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -1002,11 +1002,11 @@ void getKeyInput(struct ButtonStruct *button)
  80007ee:	1e5a      	subs	r2, r3, #1
  80007f0:	687b      	ldr	r3, [r7, #4]
  80007f2:	611a      	str	r2, [r3, #16]
-			if (button->timeOutForPressed <= 0)
+			if (button->timeOutForPressed == 0)
  80007f4:	687b      	ldr	r3, [r7, #4]
  80007f6:	691b      	ldr	r3, [r3, #16]
  80007f8:	2b00      	cmp	r3, #0
- 80007fa:	dc09      	bgt.n	8000810 <getKeyInput+0x98>
+ 80007fa:	d109      	bne.n	8000810 <getKeyInput+0x98>
 				button->timeOutForPressed = TIME_OUT_FOR_LONG_PRESSED / TIME_READ_BTN;
  80007fc:	687b      	ldr	r3, [r7, #4]
  80007fe:	2219      	movs	r2, #25
@@ -1114,15 +1114,12 @@ void fsm_traffic_light()
  8000894:	080009ad 	.word	0x080009ad
 	{
 	case INIT:
-		if (1)
-		{
-			init_auto_red_grn();
+		init_auto_red_grn();
  8000898:	f000 f9b6 	bl	8000c08 <init_auto_red_grn>
-			TRAFFIC_LIGHT_STATE = AUTO_RED_GRN;
+		TRAFFIC_LIGHT_STATE = AUTO_RED_GRN;
  800089c:	4b53      	ldr	r3, [pc, #332]	@ (80009ec <fsm_traffic_light+0x188>)
  800089e:	2201      	movs	r2, #1
  80008a0:	701a      	strb	r2, [r3, #0]
-		}
 		break;
  80008a2:	e0a0      	b.n	80009e6 <fsm_traffic_light+0x182>
 	case AUTO_RED_GRN:
@@ -1708,11 +1705,8 @@ void auto_red_grn()
 {
  8000c60:	b580      	push	{r7, lr}
  8000c62:	af00      	add	r7, sp, #0
-	if (1)
-	{
-		turn_on_red_grn();
+	turn_on_red_grn();
  8000c64:	f7ff ff38 	bl	8000ad8 <turn_on_red_grn>
-	}
 
 	if (isFlag(TIMER_7SEG))
  8000c68:	2002      	movs	r0, #2
@@ -1813,11 +1807,9 @@ void auto_red_yel()
 {
  8000d10:	b580      	push	{r7, lr}
  8000d12:	af00      	add	r7, sp, #0
-	if (1)
-	{
-		turn_on_red_yel();
+
+	turn_on_red_yel();
  8000d14:	f7ff ff06 	bl	8000b24 <turn_on_red_yel>
-	}
 
 	if (isFlag(TIMER_7SEG))
  8000d18:	2002      	movs	r0, #2
@@ -1919,11 +1911,8 @@ void auto_grn_red()
 {
  8000dc4:	b580      	push	{r7, lr}
  8000dc6:	af00      	add	r7, sp, #0
-	if (1)
-	{
-		turn_on_grn_red();
+	turn_on_grn_red();
  8000dc8:	f7ff fed2 	bl	8000b70 <turn_on_grn_red>
-	}
 
 	if (isFlag(TIMER_7SEG))
  8000dcc:	2002      	movs	r0, #2
@@ -2024,11 +2013,8 @@ void auto_yel_red()
 {
  8000e74:	b580      	push	{r7, lr}
  8000e76:	af00      	add	r7, sp, #0
-	if (1)
-	{
-		turn_on_yel_red();
+	turn_on_yel_red();
  8000e78:	f7ff fea0 	bl	8000bbc <turn_on_yel_red>
-	}
 
 	if (isFlag(TIMER_7SEG))
  8000e7c:	2002      	movs	r0, #2
@@ -2129,68 +2115,66 @@ void red_time_config()
 {
  8000f1c:	b580      	push	{r7, lr}
  8000f1e:	af00      	add	r7, sp, #0
-	if (1)
-	{
-		if (isButtonPressed(&button1))
+	if (isButtonPressed(&button1))
  8000f20:	4840      	ldr	r0, [pc, #256]	@ (8001024 <red_time_config+0x108>)
  8000f22:	f7ff fc79 	bl	8000818 <isButtonPressed>
  8000f26:	4603      	mov	r3, r0
  8000f28:	2b00      	cmp	r3, #0
  8000f2a:	d004      	beq.n	8000f36 <red_time_config+0x1a>
-		{
-			++red_temp_time;
+	{
+		++red_temp_time;
  8000f2c:	4b3e      	ldr	r3, [pc, #248]	@ (8001028 <red_time_config+0x10c>)
  8000f2e:	681b      	ldr	r3, [r3, #0]
  8000f30:	3301      	adds	r3, #1
  8000f32:	4a3d      	ldr	r2, [pc, #244]	@ (8001028 <red_time_config+0x10c>)
  8000f34:	6013      	str	r3, [r2, #0]
-		}
-		if (isButtonLongPressed(&button1))
+	}
+	if (isButtonLongPressed(&button1))
  8000f36:	483b      	ldr	r0, [pc, #236]	@ (8001024 <red_time_config+0x108>)
  8000f38:	f7ff fc81 	bl	800083e <isButtonLongPressed>
  8000f3c:	4603      	mov	r3, r0
  8000f3e:	2b00      	cmp	r3, #0
  8000f40:	d004      	beq.n	8000f4c <red_time_config+0x30>
-		{
-			red_temp_time += 5;
+	{
+		red_temp_time += 5;
  8000f42:	4b39      	ldr	r3, [pc, #228]	@ (8001028 <red_time_config+0x10c>)
  8000f44:	681b      	ldr	r3, [r3, #0]
  8000f46:	3305      	adds	r3, #5
  8000f48:	4a37      	ldr	r2, [pc, #220]	@ (8001028 <red_time_config+0x10c>)
  8000f4a:	6013      	str	r3, [r2, #0]
-		}
-		if (red_temp_time > MAX_COUNTER)
+	}
+	if (red_temp_time > MAX_COUNTER)
  8000f4c:	4b36      	ldr	r3, [pc, #216]	@ (8001028 <red_time_config+0x10c>)
  8000f4e:	681b      	ldr	r3, [r3, #0]
  8000f50:	2b63      	cmp	r3, #99	@ 0x63
  8000f52:	dd02      	ble.n	8000f5a <red_time_config+0x3e>
-		{
-			red_temp_time = MIN_COUNTER;
+	{
+		red_temp_time = MIN_COUNTER;
  8000f54:	4b34      	ldr	r3, [pc, #208]	@ (8001028 <red_time_config+0x10c>)
  8000f56:	2201      	movs	r2, #1
  8000f58:	601a      	str	r2, [r3, #0]
-		}
-		if (isButtonPressed(&button2))
+	}
+	if (isButtonPressed(&button2))
  8000f5a:	4834      	ldr	r0, [pc, #208]	@ (800102c <red_time_config+0x110>)
  8000f5c:	f7ff fc5c 	bl	8000818 <isButtonPressed>
  8000f60:	4603      	mov	r3, r0
  8000f62:	2b00      	cmp	r3, #0
  8000f64:	d010      	beq.n	8000f88 <red_time_config+0x6c>
-		{
-			if (red_temp_time > yel_time)
+	{
+		if (red_temp_time > yel_time)
  8000f66:	4b30      	ldr	r3, [pc, #192]	@ (8001028 <red_time_config+0x10c>)
  8000f68:	681a      	ldr	r2, [r3, #0]
  8000f6a:	4b31      	ldr	r3, [pc, #196]	@ (8001030 <red_time_config+0x114>)
  8000f6c:	681b      	ldr	r3, [r3, #0]
  8000f6e:	429a      	cmp	r2, r3
  8000f70:	dd0a      	ble.n	8000f88 <red_time_config+0x6c>
-			{
-				red_time = red_temp_time;
+		{
+			red_time = red_temp_time;
  8000f72:	4b2d      	ldr	r3, [pc, #180]	@ (8001028 <red_time_config+0x10c>)
  8000f74:	681b      	ldr	r3, [r3, #0]
  8000f76:	4a2f      	ldr	r2, [pc, #188]	@ (8001034 <red_time_config+0x118>)
  8000f78:	6013      	str	r3, [r2, #0]
-				grn_time = red_time - yel_time;
+			grn_time = red_time - yel_time;
  8000f7a:	4b2e      	ldr	r3, [pc, #184]	@ (8001034 <red_time_config+0x118>)
  8000f7c:	681a      	ldr	r2, [r3, #0]
  8000f7e:	4b2c      	ldr	r3, [pc, #176]	@ (8001030 <red_time_config+0x114>)
@@ -2198,17 +2182,16 @@ void red_time_config()
  8000f82:	1ad3      	subs	r3, r2, r3
  8000f84:	4a2c      	ldr	r2, [pc, #176]	@ (8001038 <red_time_config+0x11c>)
  8000f86:	6013      	str	r3, [r2, #0]
-			}
 		}
+	}
 
-		counter_way0 = red_temp_time;
+	counter_way0 = red_temp_time;
  8000f88:	4b27      	ldr	r3, [pc, #156]	@ (8001028 <red_time_config+0x10c>)
  8000f8a:	681b      	ldr	r3, [r3, #0]
  8000f8c:	4a2b      	ldr	r2, [pc, #172]	@ (800103c <red_time_config+0x120>)
  8000f8e:	6013      	str	r3, [r2, #0]
-		update_led_7seg_buffer();
+	update_led_7seg_buffer();
  8000f90:	f7ff f936 	bl	8000200 <update_led_7seg_buffer>
-	}
 
 	if (isFlag(TIMER_250MS))
  8000f94:	2006      	movs	r0, #6
@@ -2368,69 +2351,67 @@ void yel_time_config()
 {
  8001094:	b580      	push	{r7, lr}
  8001096:	af00      	add	r7, sp, #0
-    if (1)
-    {
-        if (isButtonPressed(&button1))
+	if (isButtonPressed(&button1))
  8001098:	4841      	ldr	r0, [pc, #260]	@ (80011a0 <yel_time_config+0x10c>)
  800109a:	f7ff fbbd 	bl	8000818 <isButtonPressed>
  800109e:	4603      	mov	r3, r0
  80010a0:	2b00      	cmp	r3, #0
  80010a2:	d004      	beq.n	80010ae <yel_time_config+0x1a>
-        {
-            ++yel_temp_time;
+	{
+		++yel_temp_time;
  80010a4:	4b3f      	ldr	r3, [pc, #252]	@ (80011a4 <yel_time_config+0x110>)
  80010a6:	681b      	ldr	r3, [r3, #0]
  80010a8:	3301      	adds	r3, #1
  80010aa:	4a3e      	ldr	r2, [pc, #248]	@ (80011a4 <yel_time_config+0x110>)
  80010ac:	6013      	str	r3, [r2, #0]
-        }
-        if (isButtonLongPressed(&button1))
+	}
+	if (isButtonLongPressed(&button1))
  80010ae:	483c      	ldr	r0, [pc, #240]	@ (80011a0 <yel_time_config+0x10c>)
  80010b0:	f7ff fbc5 	bl	800083e <isButtonLongPressed>
  80010b4:	4603      	mov	r3, r0
  80010b6:	2b00      	cmp	r3, #0
  80010b8:	d004      	beq.n	80010c4 <yel_time_config+0x30>
-        {
-            yel_temp_time += 5;
+	{
+		yel_temp_time += 5;
  80010ba:	4b3a      	ldr	r3, [pc, #232]	@ (80011a4 <yel_time_config+0x110>)
  80010bc:	681b      	ldr	r3, [r3, #0]
  80010be:	3305      	adds	r3, #5
  80010c0:	4a38      	ldr	r2, [pc, #224]	@ (80011a4 <yel_time_config+0x110>)
  80010c2:	6013      	str	r3, [r2, #0]
-        }
-        if (yel_temp_time > MAX_COUNTER)
+	}
+	if (yel_temp_time > MAX_COUNTER)
  80010c4:	4b37      	ldr	r3, [pc, #220]	@ (80011a4 <yel_time_config+0x110>)
  80010c6:	681b      	ldr	r3, [r3, #0]
  80010c8:	2b63      	cmp	r3, #99	@ 0x63
  80010ca:	dd02      	ble.n	80010d2 <yel_time_config+0x3e>
-        {
-            yel_temp_time = MIN_COUNTER;
+	{
+		yel_temp_time = MIN_COUNTER;
  80010cc:	4b35      	ldr	r3, [pc, #212]	@ (80011a4 <yel_time_config+0x110>)
  80010ce:	2201      	movs	r2, #1
  80010d0:	601a      	str	r2, [r3, #0]
-        }
+	}
 
-        if (isButtonPressed(&button2))
+	if (isButtonPressed(&button2))
  80010d2:	4835      	ldr	r0, [pc, #212]	@ (80011a8 <yel_time_config+0x114>)
  80010d4:	f7ff fba0 	bl	8000818 <isButtonPressed>
  80010d8:	4603      	mov	r3, r0
  80010da:	2b00      	cmp	r3, #0
  80010dc:	d010      	beq.n	8001100 <yel_time_config+0x6c>
-        {
-            if (red_time > yel_temp_time)
+	{
+		if (red_time > yel_temp_time)
  80010de:	4b33      	ldr	r3, [pc, #204]	@ (80011ac <yel_time_config+0x118>)
  80010e0:	681a      	ldr	r2, [r3, #0]
  80010e2:	4b30      	ldr	r3, [pc, #192]	@ (80011a4 <yel_time_config+0x110>)
  80010e4:	681b      	ldr	r3, [r3, #0]
  80010e6:	429a      	cmp	r2, r3
  80010e8:	dd0a      	ble.n	8001100 <yel_time_config+0x6c>
-            {
-                yel_time = yel_temp_time;
+		{
+			yel_time = yel_temp_time;
  80010ea:	4b2e      	ldr	r3, [pc, #184]	@ (80011a4 <yel_time_config+0x110>)
  80010ec:	681b      	ldr	r3, [r3, #0]
  80010ee:	4a30      	ldr	r2, [pc, #192]	@ (80011b0 <yel_time_config+0x11c>)
  80010f0:	6013      	str	r3, [r2, #0]
-                grn_time = red_time - yel_time;
+			grn_time = red_time - yel_time;
  80010f2:	4b2e      	ldr	r3, [pc, #184]	@ (80011ac <yel_time_config+0x118>)
  80010f4:	681a      	ldr	r2, [r3, #0]
  80010f6:	4b2e      	ldr	r3, [pc, #184]	@ (80011b0 <yel_time_config+0x11c>)
@@ -2438,17 +2419,16 @@ void yel_time_config()
  80010fa:	1ad3      	subs	r3, r2, r3
  80010fc:	4a2d      	ldr	r2, [pc, #180]	@ (80011b4 <yel_time_config+0x120>)
  80010fe:	6013      	str	r3, [r2, #0]
-            }
-        }
+		}
+	}
 
-        counter_way0 = yel_temp_time;
+	counter_way0 = yel_temp_time;
  8001100:	4b28      	ldr	r3, [pc, #160]	@ (80011a4 <yel_time_config+0x110>)
  8001102:	681b      	ldr	r3, [r3, #0]
  8001104:	4a2c      	ldr	r2, [pc, #176]	@ (80011b8 <yel_time_config+0x124>)
  8001106:	6013      	str	r3, [r2, #0]
-        update_led_7seg_buffer();
+	update_led_7seg_buffer();
  8001108:	f7ff f87a 	bl	8000200 <update_led_7seg_buffer>
-    }
 
     if (isFlag(TIMER_250MS))
  800110c:	2006      	movs	r0, #6
@@ -2608,63 +2588,59 @@ void grn_time_config()
 {
  8001210:	b580      	push	{r7, lr}
  8001212:	af00      	add	r7, sp, #0
-    if (1)
-    {
-        if (isButtonPressed(&button1))
+	if (isButtonPressed(&button1))
  8001214:	483e      	ldr	r0, [pc, #248]	@ (8001310 <grn_time_config+0x100>)
  8001216:	f7ff faff 	bl	8000818 <isButtonPressed>
  800121a:	4603      	mov	r3, r0
  800121c:	2b00      	cmp	r3, #0
  800121e:	d004      	beq.n	800122a <grn_time_config+0x1a>
-        {
-            ++grn_temp_time;
+	{
+		++grn_temp_time;
  8001220:	4b3c      	ldr	r3, [pc, #240]	@ (8001314 <grn_time_config+0x104>)
  8001222:	681b      	ldr	r3, [r3, #0]
  8001224:	3301      	adds	r3, #1
  8001226:	4a3b      	ldr	r2, [pc, #236]	@ (8001314 <grn_time_config+0x104>)
  8001228:	6013      	str	r3, [r2, #0]
-        }
-        if (isButtonLongPressed(&button1))
+	}
+	if (isButtonLongPressed(&button1))
  800122a:	4839      	ldr	r0, [pc, #228]	@ (8001310 <grn_time_config+0x100>)
  800122c:	f7ff fb07 	bl	800083e <isButtonLongPressed>
  8001230:	4603      	mov	r3, r0
  8001232:	2b00      	cmp	r3, #0
  8001234:	d004      	beq.n	8001240 <grn_time_config+0x30>
-        {
-            grn_temp_time += 5;
+	{
+		grn_temp_time += 5;
  8001236:	4b37      	ldr	r3, [pc, #220]	@ (8001314 <grn_time_config+0x104>)
  8001238:	681b      	ldr	r3, [r3, #0]
  800123a:	3305      	adds	r3, #5
  800123c:	4a35      	ldr	r2, [pc, #212]	@ (8001314 <grn_time_config+0x104>)
  800123e:	6013      	str	r3, [r2, #0]
-        }
-        if (grn_temp_time > MAX_COUNTER)
+	}
+	if (grn_temp_time > MAX_COUNTER)
  8001240:	4b34      	ldr	r3, [pc, #208]	@ (8001314 <grn_time_config+0x104>)
  8001242:	681b      	ldr	r3, [r3, #0]
  8001244:	2b63      	cmp	r3, #99	@ 0x63
  8001246:	dd02      	ble.n	800124e <grn_time_config+0x3e>
-        {
-            grn_temp_time = MIN_COUNTER;
+	{
+		grn_temp_time = MIN_COUNTER;
  8001248:	4b32      	ldr	r3, [pc, #200]	@ (8001314 <grn_time_config+0x104>)
  800124a:	2201      	movs	r2, #1
  800124c:	601a      	str	r2, [r3, #0]
-        }
+	}
 
-        if (isButtonPressed(&button2))
+	if (isButtonPressed(&button2))
  800124e:	4832      	ldr	r0, [pc, #200]	@ (8001318 <grn_time_config+0x108>)
  8001250:	f7ff fae2 	bl	8000818 <isButtonPressed>
  8001254:	4603      	mov	r3, r0
  8001256:	2b00      	cmp	r3, #0
  8001258:	d00a      	beq.n	8001270 <grn_time_config+0x60>
-        {
-            if (1)
-            {
-                grn_time = grn_temp_time;
+	{
+		grn_time = grn_temp_time;
  800125a:	4b2e      	ldr	r3, [pc, #184]	@ (8001314 <grn_time_config+0x104>)
  800125c:	681b      	ldr	r3, [r3, #0]
  800125e:	4a2f      	ldr	r2, [pc, #188]	@ (800131c <grn_time_config+0x10c>)
  8001260:	6013      	str	r3, [r2, #0]
-                red_time = grn_time + yel_time;
+		red_time = grn_time + yel_time;
  8001262:	4b2e      	ldr	r3, [pc, #184]	@ (800131c <grn_time_config+0x10c>)
  8001264:	681a      	ldr	r2, [r3, #0]
  8001266:	4b2e      	ldr	r3, [pc, #184]	@ (8001320 <grn_time_config+0x110>)
@@ -2672,17 +2648,15 @@ void grn_time_config()
  800126a:	4413      	add	r3, r2
  800126c:	4a2d      	ldr	r2, [pc, #180]	@ (8001324 <grn_time_config+0x114>)
  800126e:	6013      	str	r3, [r2, #0]
-            }
-        }
+	}
 
-        counter_way0 = grn_temp_time;
+	counter_way0 = grn_temp_time;
  8001270:	4b28      	ldr	r3, [pc, #160]	@ (8001314 <grn_time_config+0x104>)
  8001272:	681b      	ldr	r3, [r3, #0]
  8001274:	4a2c      	ldr	r2, [pc, #176]	@ (8001328 <grn_time_config+0x118>)
  8001276:	6013      	str	r3, [r2, #0]
-        update_led_7seg_buffer();
+	update_led_7seg_buffer();
  8001278:	f7fe ffc2 	bl	8000200 <update_led_7seg_buffer>
-    }
 
     if (isFlag(TIMER_250MS))
  800127c:	2006      	movs	r0, #6

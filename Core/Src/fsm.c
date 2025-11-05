@@ -14,11 +14,8 @@ void fsm_traffic_light()
 	switch (TRAFFIC_LIGHT_STATE)
 	{
 	case INIT:
-		if (1)
-		{
-			init_auto_red_grn();
-			TRAFFIC_LIGHT_STATE = AUTO_RED_GRN;
-		}
+		init_auto_red_grn();
+		TRAFFIC_LIGHT_STATE = AUTO_RED_GRN;
 		break;
 	case AUTO_RED_GRN:
 		auto_red_grn();
@@ -192,10 +189,7 @@ void init_auto_red_grn()
 
 void auto_red_grn()
 {
-	if (1)
-	{
-		turn_on_red_grn();
-	}
+	turn_on_red_grn();
 
 	if (isFlag(TIMER_7SEG))
 	{
@@ -226,10 +220,8 @@ void init_auto_red_yel()
 
 void auto_red_yel()
 {
-	if (1)
-	{
-		turn_on_red_yel();
-	}
+
+	turn_on_red_yel();
 
 	if (isFlag(TIMER_7SEG))
 	{
@@ -260,10 +252,7 @@ void init_auto_grn_red()
 
 void auto_grn_red()
 {
-	if (1)
-	{
-		turn_on_grn_red();
-	}
+	turn_on_grn_red();
 
 	if (isFlag(TIMER_7SEG))
 	{
@@ -294,10 +283,7 @@ void init_auto_yel_red()
 
 void auto_yel_red()
 {
-	if (1)
-	{
-		turn_on_yel_red();
-	}
+	turn_on_yel_red();
 
 	if (isFlag(TIMER_7SEG))
 	{
@@ -330,32 +316,29 @@ void init_red_time_config()
 
 void red_time_config()
 {
-	if (1)
+	if (isButtonPressed(&button1))
 	{
-		if (isButtonPressed(&button1))
-		{
-			++red_temp_time;
-		}
-		if (isButtonLongPressed(&button1))
-		{
-			red_temp_time += 5;
-		}
-		if (red_temp_time > MAX_COUNTER)
-		{
-			red_temp_time = MIN_COUNTER;
-		}
-		if (isButtonPressed(&button2))
-		{
-			if (red_temp_time > yel_time)
-			{
-				red_time = red_temp_time;
-				grn_time = red_time - yel_time;
-			}
-		}
-
-		counter_way0 = red_temp_time;
-		update_led_7seg_buffer();
+		++red_temp_time;
 	}
+	if (isButtonLongPressed(&button1))
+	{
+		red_temp_time += 5;
+	}
+	if (red_temp_time > MAX_COUNTER)
+	{
+		red_temp_time = MIN_COUNTER;
+	}
+	if (isButtonPressed(&button2))
+	{
+		if (red_temp_time > yel_time)
+		{
+			red_time = red_temp_time;
+			grn_time = red_time - yel_time;
+		}
+	}
+
+	counter_way0 = red_temp_time;
+	update_led_7seg_buffer();
 
 	if (isFlag(TIMER_250MS))
 	{
@@ -408,33 +391,30 @@ void init_yel_time_config()
 
 void yel_time_config()
 {
-    if (1)
-    {
-        if (isButtonPressed(&button1))
-        {
-            ++yel_temp_time;
-        }
-        if (isButtonLongPressed(&button1))
-        {
-            yel_temp_time += 5;
-        }
-        if (yel_temp_time > MAX_COUNTER)
-        {
-            yel_temp_time = MIN_COUNTER;
-        }
+	if (isButtonPressed(&button1))
+	{
+		++yel_temp_time;
+	}
+	if (isButtonLongPressed(&button1))
+	{
+		yel_temp_time += 5;
+	}
+	if (yel_temp_time > MAX_COUNTER)
+	{
+		yel_temp_time = MIN_COUNTER;
+	}
 
-        if (isButtonPressed(&button2))
-        {
-            if (red_time > yel_temp_time)
-            {
-                yel_time = yel_temp_time;
-                grn_time = red_time - yel_time;
-            }
-        }
+	if (isButtonPressed(&button2))
+	{
+		if (red_time > yel_temp_time)
+		{
+			yel_time = yel_temp_time;
+			grn_time = red_time - yel_time;
+		}
+	}
 
-        counter_way0 = yel_temp_time;
-        update_led_7seg_buffer();
-    }
+	counter_way0 = yel_temp_time;
+	update_led_7seg_buffer();
 
     if (isFlag(TIMER_250MS))
     {
@@ -486,33 +466,27 @@ void init_grn_time_config()
 
 void grn_time_config()
 {
-    if (1)
-    {
-        if (isButtonPressed(&button1))
-        {
-            ++grn_temp_time;
-        }
-        if (isButtonLongPressed(&button1))
-        {
-            grn_temp_time += 5;
-        }
-        if (grn_temp_time > MAX_COUNTER)
-        {
-            grn_temp_time = MIN_COUNTER;
-        }
+	if (isButtonPressed(&button1))
+	{
+		++grn_temp_time;
+	}
+	if (isButtonLongPressed(&button1))
+	{
+		grn_temp_time += 5;
+	}
+	if (grn_temp_time > MAX_COUNTER)
+	{
+		grn_temp_time = MIN_COUNTER;
+	}
 
-        if (isButtonPressed(&button2))
-        {
-            if (1)
-            {
-                grn_time = grn_temp_time;
-                red_time = grn_time + yel_time;
-            }
-        }
+	if (isButtonPressed(&button2))
+	{
+		grn_time = grn_temp_time;
+		red_time = grn_time + yel_time;
+	}
 
-        counter_way0 = grn_temp_time;
-        update_led_7seg_buffer();
-    }
+	counter_way0 = grn_temp_time;
+	update_led_7seg_buffer();
 
     if (isFlag(TIMER_250MS))
     {

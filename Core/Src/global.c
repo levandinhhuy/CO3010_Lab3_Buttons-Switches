@@ -14,9 +14,9 @@ int status_4digits[4] = {LED_ON, LED_ON, LED_ON, LED_ON};
 int counter_way0 = 0;
 int counter_way1 = 0;
 
-int red_time = 15;
+int red_time = 9;
 int yel_time = 3;
-int grn_time = 12;
+int grn_time = 6;
 
 int red_temp_time = 5;
 int yel_temp_time = 2;

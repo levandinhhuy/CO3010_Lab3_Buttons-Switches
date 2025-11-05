@@ -13,8 +13,8 @@
 
 struct ButtonStruct
 {
-	int keyBuffer[4];	   // New data in [0], old data in [2]
-	int timeOutForPressed; // ms
+	int keyBuffer[4];
+	int timeOutForPressed;
 	int isPressed;
 	int isLongPress;
 	GPIO_TypeDef *PORT;
